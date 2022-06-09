@@ -13,22 +13,27 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const root = document.getElementById("root");
-    
-    function App() {
-      const [counter, setCounter] = React.useState(1);
-      const onClick = () => {
-        setCounter((current) => current * 2);
-      };
 
+    function Counter() {
+
+      const [number, setNumber] = React.useState(0);
+
+      const onIncrease = () => {
+        setNumber(number + 1);
+      }
+      const onDecrease = () => {
+        setNumber(number - 1);
+      }
       return (
         <div>
-          <h3>Total clicks : {counter}</h3>
-          <button onClick={onClick}>Click me!</button>
+          <h1>{number}</h1>
+          <button onClick={onIncrease}>+1</button>
+          <button onClick={onDecrease}>-1</button>
         </div>
       );
     }
+    const root = document.getElementById("root");
+    ReactDOM.render(<Counter />, root);
 
-    ReactDOM.render(<App />, root);
   </script>
 </html>
